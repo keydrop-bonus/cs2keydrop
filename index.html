@@ -15,14 +15,31 @@
     }
     .container {
       position: relative;
-      max-width: 800px; /* ảnh ngang rộng hơn */
+      max-width: 800px;
       width: 90%;
+      text-align: center;
     }
     img {
       width: 100%;
       height: auto;
       border-radius: 12px;
       display: block;
+    }
+    .loader {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 5px solid #ccc;
+      border-top: 5px solid #2ee0c0;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% {transform: translate(-50%, -50%) rotate(0deg);}
+      100% {transform: translate(-50%, -50%) rotate(360deg);}
     }
     a.button {
       position: absolute;
@@ -47,7 +64,8 @@
 <body>
   <div class="container">
     <img src="banner.png" alt="WELCOME CS2 BONUS">
-    <a class="button" href="https://keydrop.com/vi/?code=CSGOCODE1&utm_source=instagram&utm_medium=referral">GET YOUR BONUS</a>
+    <div class="loader"></div>
+    <a class="button" href="#">Continue to Bonus Site</a>
   </div>
 </body>
 </html>
