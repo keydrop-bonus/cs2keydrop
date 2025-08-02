@@ -3,90 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KeyDrop Clone</title>
+  <title>KeyDrop Case Opening</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background: linear-gradient(to bottom right, #1f0036, #002b36, #000000);
-      background-image: url('keydrop-bg.jpg');
+      font-family: 'Segoe UI', sans-serif;
+      background: url('keydrop-bg.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
-    }
-
-    .content {
-      z-index: 2;
+      height: 100vh;
+      color: #fff;
       text-align: center;
-      animation: fadeInUp 1.2s ease-out;
+      flex-direction: column;
+      background-color: #0d0c1d;
     }
 
-    .content h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-    }
-
-    .content p {
-      font-size: 1.2em;
-      margin-bottom: 1.5em;
-      color: #ddd;
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 1.1em;
+    .logo {
+      font-size: 50px;
       font-weight: bold;
-      background: linear-gradient(45deg, #8a2be2, #00bcd4);
-      color: white;
+      margin-bottom: 10px;
+    }
+
+    .logo span {
+      color: #f5b940;
+    }
+
+    .question {
+      font-size: 26px;
+      margin: 10px 0 40px;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 15px 40px;
+      font-size: 20px;
+      font-weight: bold;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.3s ease;
+      transition: transform 0.2s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
-    button:hover {
+    .btn:hover {
       transform: scale(1.05);
-      background: linear-gradient(45deg, #7b1fa2, #0097a7);
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
+    .yes {
+      background: linear-gradient(145deg, #f7c045, #ef9d00);
+      color: black;
+    }
+
+    .no {
+      background-color: #1a1a2e;
+      color: white;
+      border: 2px solid #444;
+    }
+
+    .loader {
+      width: 300px;
+      height: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loader::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 60%;
+      background: linear-gradient(90deg, #007bff, #00f7ff);
+      animation: loading 1.5s infinite;
+      border-radius: 20px;
+    }
+
+    @keyframes loading {
+      0% {
+        left: -60%;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      50% {
+        left: 20%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 36px;
+      }
+
+      .question {
+        font-size: 20px;
+      }
+
+      .btn {
+        font-size: 18px;
+        padding: 12px 30px;
+      }
+
+      .loader {
+        width: 200px;
+        height: 12px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <div class="content">
-    <h1>Are you 18 or older?</h1>
-    <p>Confirm your age to access exclusive cases and giveaways.</p>
-    <button onclick="redirect()">YES, I AM</button>
+  <div class="logo">
+    <span>key</span>drop
   </div>
 
-  <script>
-    function redirect() {
-      window.location.href = "https://keydrop.com/vi/?code=CSGOCODE1";
-    }
-  </script>
+  <div class="question">Do you want to start opening cases now?</div>
+
+  <div class="button-container">
+    <button class="btn yes" onclick="window.location.href='https://keydrop.com/vi/?code=CSGOCODE1'">YES</button>
+    <button class="btn no">NO</button>
+  </div>
+
+  <div class="loader"></div>
 </body>
 </html>
